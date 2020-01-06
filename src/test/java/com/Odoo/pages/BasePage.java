@@ -20,5 +20,9 @@ public class BasePage {
             PageFactory.initElements(Driver.get(), this);
         }
 
+        public void navigateToModule(String module){
+
+        }
+
 
 }
