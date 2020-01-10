@@ -4,6 +4,8 @@ import com.Odoo.utilities.BrowserUtils;
 import com.Odoo.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,6 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class BasePage {
+        @FindBy(xpath = "//a[text()='Log out']")
+        public WebElement logOutElement;
+
+        @FindBy(className = "oe_topbar_name")
+        public WebElement userDropDownMenu;
+
+
 
 
 
@@ -40,7 +49,18 @@ public class BasePage {
          return Driver.get().getTitle();
 
         }
+        public String getPageSubTitle(String subTitle){
+           String subTitleLocator = "//li[text()='" + subTitle + "']";
+           BrowserUtils.wait(3);
+          return Driver.get().findElement(By.xpath(subTitle)).getText();
 
+        }
+
+        public void clickUserDropDownMenu(){
+           BrowserUtils.waitForVisibility(userDropDownMenu,3);
+           BrowserUtils.waitForClickablility(userDropDownMenu,3);
+           userDropDownMenu.click();
+        }
 
 
 }

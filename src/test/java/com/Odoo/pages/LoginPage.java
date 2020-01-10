@@ -30,6 +30,9 @@ public class LoginPage extends BasePage {
     }
 
     public void login(String userName, String password){
+        BrowserUtils.waitForVisibility(signInButton,3);
+        BrowserUtils.waitForClickablility(signInButton,3);
+        signInButton.click();
         emailForLogin.sendKeys(userName);
         //Keys.ENTER to replace login click
         passwordElement.sendKeys(password, Keys.ENTER);
@@ -39,8 +42,31 @@ public class LoginPage extends BasePage {
         BrowserUtils.waitForClickablility(signInButton,3);
         signInButton.click();
         emailForLogin.sendKeys(ConfigurationReader.getProperty("username5"));
-        passwordElement.sendKeys(ConfigurationReader.getProperty("pospassword"));
+        passwordElement.sendKeys(ConfigurationReader.getProperty("password1"));
         loginButton.click();
+    }
+    public void login(String role) {
+
+        String username = "";
+        String Password = "";
+        switch (role){
+            case "inventory manager":
+                username = ConfigurationReader.getProperty("user_name");
+                Password = ConfigurationReader.getProperty("password");
+                break;
+            case "pos manager":
+                username = ConfigurationReader.getProperty("username5");
+                Password = ConfigurationReader.getProperty("password1");
+                break;
+            case "events crm manager":
+                username = ConfigurationReader.getProperty("username10");
+                Password = ConfigurationReader.getProperty("password2");
+                break;
+            default:
+                throw new RuntimeException("Invalid role!");
+        }
+
+        login(username, Password);
     }
 
 }
