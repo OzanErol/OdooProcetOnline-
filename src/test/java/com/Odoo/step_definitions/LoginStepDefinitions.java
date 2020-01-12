@@ -21,8 +21,14 @@ public class LoginStepDefinitions {
         loginPage.login();
     }
 
+    @Then("user logs in as inventory manager")
+    public void user_logs_in_as_inventory_manager() {
+        loginPage.login();
+    }
+
     @Then("user verifies that {string}  page title is displayed")
     public void user_verifies_that_page_title_is_displayed(String pageTitle) {
+        BrowserUtils.wait(1);
         System.out.println(loginPage.getTitle());
         Assert.assertEquals(pageTitle,loginPage.getTitle());
 

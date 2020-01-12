@@ -38,8 +38,8 @@ public class LoginPage extends BasePage {
         BrowserUtils.waitForVisibility(signInButton,3);
         BrowserUtils.waitForClickablility(signInButton,3);
         signInButton.click();
-        emailForLogin.sendKeys(ConfigurationReader.getProperty("username5"));
-        passwordElement.sendKeys(ConfigurationReader.getProperty("pospassword"));
+        emailForLogin.sendKeys(ConfigurationReader.getProperty("user_name"));
+        passwordElement.sendKeys(ConfigurationReader.getProperty("password"));
         loginButton.click();
     }
 
