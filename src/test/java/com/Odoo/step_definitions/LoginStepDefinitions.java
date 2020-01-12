@@ -24,6 +24,7 @@ public class LoginStepDefinitions {
     @Then("user logs in as inventory manager")
     public void user_logs_in_as_inventory_manager() {
         loginPage.login();
+        BrowserUtils.wait(2);
     }
 
     @Then("user verifies that {string}  page title is displayed")
