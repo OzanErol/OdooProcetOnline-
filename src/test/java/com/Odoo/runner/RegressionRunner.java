@@ -6,14 +6,17 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = {
+                "src/test/resources/features/",
+
+        },
         glue = "com/Odoo/step_definitions",
         dryRun = false,
-        tags = "@login_with_role",
         plugin = {"html:target/default-cucumber-reports",
                 "json:target/cucumber.json",
-                "rerun:target/rerun.txt"}
+                "rerun:target/rerun.txt"
+        }
 )
 
-public class CucumberRunner {
+public class RegressionRunner {
 }

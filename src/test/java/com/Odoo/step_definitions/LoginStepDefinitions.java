@@ -16,9 +16,10 @@ public class LoginStepDefinitions {
         Driver.get().get(ConfigurationReader.getProperty("url"));
     }
 
-    @Then("user logs in as pos manager")
-    public void user_logs_in_as_pos_manager() {
-        loginPage.login();
+    @Then("user logs in as {string}")
+    public void user_logs_in_as(String role) {
+        loginPage.login(role);
+
     }
 
     @Then("user verifies that {string}  page title is displayed")
